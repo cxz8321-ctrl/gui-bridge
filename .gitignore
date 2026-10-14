@@ -1,0 +1,11 @@
+queue/
+shots/
+tmp/
+state/
+*.log
+*.pid
+*.heartbeat
+*.mtime
+audit.log
+__pycache__/
+*.pyc
