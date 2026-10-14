@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 开发模式 · 视觉解析实验（OmniParser 路线的依赖安装）
+# gui-bridge · 视觉解析实验（OmniParser 路线的依赖安装）
 # 装在 Windows 侧独立 venv（Python 3.10），不碰系统 Python；要删直接删目录
 set -uo pipefail
 LOG=/home/caixingzhe/gui-bridge/tmp/vlm_setup.log

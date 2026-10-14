@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 开发模式 · 窗口视野：列出当前顶层窗口（控件级"看得见"）
+# gui-bridge · 窗口视野：列出当前顶层窗口（控件级"看得见"）
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$ROOT/lib/guard.sh"

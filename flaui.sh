@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 开发模式 · FlaUI 命令行（直接吐 JSON）
+# gui-bridge · FlaUI 命令行（直接吐 JSON）
 # 用法：
 #   ./flaui.sh windows
 #   ./flaui.sh tree    -Window '文件资源管理器' -Depth 3 -Limit 60

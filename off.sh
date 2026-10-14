@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 开发模式 · 卸甲：停助手、清授权
+# gui-bridge · 关闭：停助手、清授权
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$ROOT/lib/guard.sh"
@@ -13,4 +13,4 @@ if [ -f "$ROOT/bridge.pid" ]; then
 fi
 rm -f "$STATE_FILE"
 audit "OFF 手动解除"
-echo "🔓 已卸甲：助手已停、授权已清（回到常态）"
+echo "🔓 已关闭：助手已停、授权已清（回到常态）"

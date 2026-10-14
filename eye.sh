@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 开发模式 · 眼睛模块：抓一张全屏截图，存到 shots/，并留痕
+# gui-bridge · 眼睛模块：抓一张全屏截图，存到 shots/，并留痕
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$ROOT/lib/guard.sh"

@@ -1,4 +1,4 @@
-# Flaui 桥（开发模式 · 工业级 UIA）
+# Flaui 桥（gui-bridge · 工业级 UIA）
 # 经隐藏 PowerShell 调 flaui/flaui.ps1，返回 dict。无闪窗（CREATE_NO_WINDOW）。
 import os, json, subprocess
 

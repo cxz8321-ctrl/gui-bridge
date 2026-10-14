@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""开发模式 · Windows 侧常驻助手（用 pythonw 启动：无控制台 → 零闪窗、零冷启动开销）
+"""gui-bridge · Windows 侧常驻助手（用 pythonw 启动：无控制台 → 零闪窗、零冷启动开销）
 
 通道：文件队列（WSL 目录经 \\wsl.localhost 暴露），无需网络配置、免防火墙。
 协议：WSL 写 queue/cmd-<id>.json → 助手执行 → 写 queue/res-<id>.json

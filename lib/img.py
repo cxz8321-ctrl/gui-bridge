@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""开发模式 · 阶段三图像工具（只需 numpy）：模板匹配 / 裁剪 / BMP↔PNG
+"""gui-bridge · 阶段三图像工具（只需 numpy）：模板匹配 / 裁剪 / BMP↔PNG
 
 用法：
   img.py info  <图>

@@ -1,4 +1,4 @@
-# 开发模式 · 顶层窗口清单（含位置/大小/进程/标题）
+# gui-bridge · 顶层窗口清单（含位置/大小/进程/标题）
 # DPI：进程声明 per-monitor v2，保证这里报的窗口坐标 = 截图的物理像素（否则会差一个缩放倍率）
 Add-Type @"
 using System;using System.Runtime.InteropServices;

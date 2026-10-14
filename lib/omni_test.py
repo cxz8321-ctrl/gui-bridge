@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""开发模式 · 视觉解析实验（OmniParser 路线）v2
+"""gui-bridge · 视觉解析实验（OmniParser 路线）v2
 改进（2026-09-13 18:00）：
   ① 放大 crop：带上下文留白裁剪 + LANCZOS 放大（默认 3x，上限 768px）+ 提高输出 token
      并落盘每个 icon 的 crop 到 out/crops/，供云 VLM 兜底复用

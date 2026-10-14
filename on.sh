@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 开发模式 · 召唤：启用 GUI 桥（默认 = 直到你喊卸才卸；不设自动到期）
+# gui-bridge · 召唤：启用 GUI 桥（默认 = 直到你喊卸才卸；不设自动到期）
 # 用法：./on.sh [--eyes-only] [--hands] [--timed 分钟]
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -19,11 +19,11 @@ done
 if [ -n "$TIMED" ]; then
   echo "$MODE timed $(( $(date +%s) + TIMED*60 ))" > "$STATE_FILE"
   audit "ON 授权=$MODE 限时=${TIMED}min 到期=$(date -d "+${TIMED} minutes" '+%F %T')"
-  echo "⚔️  变身（$MODE）· 限时 ${TIMED} 分钟"
+  echo "⚔️  开启（$MODE）· 限时 ${TIMED} 分钟"
 else
   echo "$MODE" > "$STATE_FILE"
   audit "ON 授权=$MODE 直到手动解除"
-  echo "⚔️  变身（$MODE）· 直到你说卸甲（./off.sh）"
+  echo "⚔️  开启（$MODE）· 直到你说关闭（./off.sh）"
 fi
 
 echo "    模式：$([ "$MODE" = hands ] && echo '眼睛 + 手（看 + 点/输入）' || echo '眼睛 only（只看不动）')"

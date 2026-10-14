@@ -1,6 +1,30 @@
 # gui-bridge —— Windows GUI 自动化桥（眼睛 + 手）
 
-在 **WSL 里驱动 Windows 桌面**的轻量桥：抓屏、读取控件树、OCR、模板匹配、点击与键盘输入。用文件队列在 WSL 与 Windows 之间通信，无需开放网络端口、无需装驱动。
+在 **WSL 里驱动 Windows 桌面**的轻量桥：抓屏、读取控件树、OCR、模板匹配、点击与键盘输入。用文件队列在 WSL 与 Windows 之间通信，无需开放网络端口、无需安装驱动。
+
+## 架构
+
+```mermaid
+flowchart LR
+  subgraph WSL
+    CLI["gb.py / *.sh 命令"] --> Q["queue/（cmd-*.json）"]
+  end
+  subgraph WIN["Windows"]
+    BR["常驻助手 bridge.py<br/>pythonw · 无控制台"]
+    Q --> BR
+    BR --> UIA["UIA 元素树 / FlaUI"]
+    BR --> SEND["SendInput 键盘鼠标"]
+    BR --> GDI["GDI 抓屏"]
+    BR --> OCR["WinRT OCR"]
+    BR --> R["queue/（res-*.json）"]
+  end
+  R --> CLI
+```
+
+设计取舍：
+- **常驻助手**：避免每次拉起 PowerShell 造成的高占用与闪窗；常规动作 0.2–0.6s。
+- **文件队列通信**：`\\wsl.localhost` 双向可达，免网络配置与防火墙。
+- **不依赖 AutoHotkey / WinAppDriver**：直接用原生 UIA 与 SendInput，更稳、零安装。
 
 ## 能力
 
@@ -28,20 +52,6 @@
 | `gb.py findimg 模板图` / `clickimg 模板图` | 模板匹配（NCC）→ 坐标 / 直接点击 |
 | `gb.py crop <图> <出.png> x y w h` | 从截图裁一块作模板 |
 
-## 架构
-
-```
-WSL                                 Windows
-on.sh ──启动──► pythonw.exe lib/bridge.py    ← 常驻助手（无控制台 → 零闪窗）
-                  │ UIA + SendInput + GDI + OCR（隐藏 PowerShell）
-gb.py ──写 cmd-*.json──► queue/ ──轮询──► 执行 ──写 res-*.json──► gb.py 读
-        （queue/ 经 \\wsl.localhost 双向可达：免网络配置、免防火墙）
-```
-
-设计取舍：
-- **常驻助手**：避免每次拉起 PowerShell 造成的高占用与闪窗；常规动作 0.2–0.6s。
-- **不依赖 AutoHotkey / WinAppDriver**：直接用原生 UIA 与 SendInput，更稳、零安装。
-
 ## FlaUI 工业级后端
 
 免安装：FlaUI 5.0.0（net48）三个 DLL 放 `flaui/bin/`，用系统自带 PowerShell 5.1 直接加载（首次自动缓存到 `%LOCALAPPDATA%\gui-bridge-flaui\bin`），无需 .NET SDK。
@@ -65,7 +75,7 @@ gb.py ──写 cmd-*.json──► queue/ ──轮询──► 执行 ──�
 
 链路：YOLO（icon_detect）找图标 → Florence-2（icon_caption）给图标语义 → Windows OCR 找文字 → 合成 `out/omniparser_result.json` + overlay 图。脚本 `lib/omni_test.py`。
 
-对上位（`lib/omni_cloud.py`，走云 VLM 兜底，只处理需要补描述的目标）：
+上层（`lib/omni_cloud.py`，走云 VLM 兜底，只处理需要补描述的目标）：
 - 支持 `--ground`（整屏 grounding：输出「功能|x|y」元素表）、`--scene`（一句话场景）、`--crop <png>`（单张试）。
 - 云 VLM 给**短中文功能名**，可用度明显高于本地泛描述。
 

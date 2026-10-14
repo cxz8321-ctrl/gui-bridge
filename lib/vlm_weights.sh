@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 开发模式 · 下载 OmniParser 权重（图标检测 + 图标描述），走本地代理
+# gui-bridge · 下载 OmniParser 权重（图标检测 + 图标描述），走本地代理
 set -uo pipefail
 LOG=/home/caixingzhe/gui-bridge/tmp/vlm_weights.log
 W=/mnt/c/Users/Think/AppData/Local/gui-bridge-vlm

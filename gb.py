@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""开发模式 · WSL 侧客户端：和 Windows 常驻助手对话（文件队列）
+"""gui-bridge · WSL 侧客户端：和 Windows 常驻助手对话（文件队列）
 
 用法：
   gb.py start | stop | status
@@ -49,7 +49,7 @@ def die(msg, code=1):
 
 def armed(need_hands=False):
     if not os.path.exists(STATE):
-        die("未变身：先跑 ./on.sh")
+        die("未开启：先跑 ./on.sh")
     tok = open(STATE).read().split()
     if "timed" in tok:
         i = tok.index("timed")

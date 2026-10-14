@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""开发模式 · 云 VLM 兜底（GLM-4.6V）—— 本地 Florence 描述泛/失败时的第二层
+"""gui-bridge · 云 VLM 兜底（GLM-4.6V）—— 本地 Florence 描述泛/失败时的第二层
 用法（WSL 侧跑）：
   python3 lib/omni_cloud.py                 # 处理 result json 里 needs_cloud 的 icon
   python3 lib/omni_cloud.py --ctx           # 同上，但带"整屏上下文 + 框选位置"一起问（v2，更准）

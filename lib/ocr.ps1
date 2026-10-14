@@ -1,4 +1,4 @@
-﻿# 开发模式 · OCR（Windows 原生 Windows.Media.Ocr，零安装，中文 zh-Hans-CN）
+﻿# gui-bridge · OCR（Windows 原生 Windows.Media.Ocr，零安装，中文 zh-Hans-CN）
 param([Parameter(Mandatory=$true)][string]$Path)
 $ErrorActionPreference = 'Stop'
 # 关键：让 stdout 以 UTF-8 输出，否则中文经重定向会变 GBK 乱码

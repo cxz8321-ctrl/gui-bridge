@@ -1,4 +1,4 @@
-# 开发模式 · 抓屏（Windows 侧执行）
+# gui-bridge · 抓屏（Windows 侧执行）
 # OUT 环境变量 = WSL 目标路径；图像经内存缓冲写出（GDI+ 不支持直接存 UNC）
 Add-Type -AssemblyName System.Drawing, System.Windows.Forms
 Add-Type @"
